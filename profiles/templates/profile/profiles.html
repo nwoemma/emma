@@ -9,7 +9,7 @@
 <body>
     <div class="container mt-5">
         <div class="card">
-            <img src="{{ user.profile.profile_picture.url }}" class="card-img-top" alt="Profile Picture">
+            <img src="{{ users.profiles.profile_pics.url }}" class="card-img-top" alt="Profile Picture">
             <div class="card-body">
                 <h5 class="card-title">{{ user.username }}</h5>
                 <p class="card-text">
@@ -17,7 +17,7 @@
                     <strong>Location:</strong> {{ user.profile.location }}<br>
                     <strong>Birth Date:</strong> {{ user.profile.birth_date|date:"F j, Y" }}
                 </p>
-                <a href="{% url 'profile_view' %}" class="btn btn-primary">Edit Profile</a>
+                <a href="#" class="btn btn-primary">Edit Profile</a>
             </div>
         </div>
     </div>
