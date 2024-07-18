@@ -2,26 +2,17 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-  <!-- Basic -->
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <!-- Mobile Metas -->
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <!-- Site Metas -->
-  <meta name="keywords" content="" />
-  <meta name="description" content="" />
-  <meta name="author" content="" />
-  <link rel="shortcut icon" href="{% static 'images/favicon.png' %}" type="">
-
-  <title>
-    {% if page_title %}
-        {{ page_title }}
-    {% else %}
-        Home Page  <!-- Use 'Home Page' as the default title -->
-    {% endif %}
-</title>
-
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>
+        {% if page_title %}
+            {{ page_title }}
+        {% else %}
+            Home Page  <!-- Use 'Home Page' as the default title -->
+        {% endif %}
+    </title>
   <!-- bootstrap core css -->
   <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" />
 
@@ -46,7 +37,7 @@
     <header class="header_section">
       <div class="container">
         <nav class="navbar navbar-expand-lg custom_nav-container ">
-          <a class="navbar-brand" href="{% url 'home' %}">
+          <a class="navbar-brand" href="{% url 'pages:home' %}">
             <span>
               Feane
             </span>
@@ -59,20 +50,20 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav  mx-auto ">
               <li class="nav-item active">
-                <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="{% url 'pages:home' %}">Home <span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'menu' %}">Menu</a>
+                <a class="nav-link" href="{% url 'pages:menu' %}">Menu</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'about' %}">About</a>
+                <a class="nav-link" href="{% url 'pages:about' %}">About</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'book' %}">Book Table</a>
+                <a class="nav-link" href="{% url 'pages:book' %}">Book Table</a>
               </li>
             </ul>
             <div class="user_option">
-              <a href="" class="user_link">
+              <a href="{% url 'profiles:profile_view' %}" class="user_link">
                 <i class="fa fa-user" aria-hidden="true"></i>
               </a>
               <a class="cart_link" href="#">
@@ -133,11 +124,6 @@
                 <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
                   <i class="fa fa-search" aria-hidden="true"></i>
                 </button>
-              </form>
-              <a href="" class="order_online">
-                Login
-              </a>
-            </div>
           </div>
         </nav>
       </div>
@@ -145,7 +131,6 @@
     {% block content %}
 
     {% endblock content %}
-
      <!-- footer section -->
   <footer class="footer_section">
     <div class="container">

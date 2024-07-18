@@ -12,22 +12,24 @@ def profile_view(request):
         form = ProfileForm(request.POST, request.FILES, instance=profile) 
         if form.is_valid():
             form.save()  # Save the updated profile
-            return redirect('profile:profile_view')  # Redirect after saving
+            return redirect('profiles:profile_view')  # Redirect after saving
     else:
         form = ProfileForm(instance=profile)  # Prepopulate the form with user's profile data
 
-    return render(request, 'profile/profiles.html', {'form': form})  # Render the profile template
+    return render(request, 'profile/profiles.html', {'form': form, 'user': request.user})
+# Render the profile template
   # Render the profile template
 
-# @login_required
-# def profile_edit(request):
-#     profile = request.user.profile  # Get the user's profile
-#     if request.method == 'POST':
-#         form = ProfileForm(request.POST, request.FILES, instance=profile)  # Include request.FILES for file uploads
-#         if form.is_valid():
-#             form.save()  # Save the updated profile
-#             return redirect('users:profile_view')  # Adjust URL name as needed
-#     else:
-#         form = ProfileForm(instance=profile)  # Prepopulate the form
+@login_required
+def edit_profile(request):
+    profile = Profile.objects.get(user=request.user)
 
-#     return render(request, 'users/profile_edit.html', {'form': form})  # Render the edit template
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, request.FILES, instance=profile)  # Include request.FILES for file uploads
+        if form.is_valid():
+            form.save()
+            return redirect('profiles:profile_view')  # Redirect to a profile view
+    else:
+        form = ProfileForm(instance=profile)
+
+    return render(request, 'profile/edit_profile.html', {'form': form})

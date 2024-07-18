@@ -1,15 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <title>Profile Card</title>
-</head>
+{% extends 'base.html' %}
+{% block title %}
+    {% if user.is_authenticated %}
+        { user.username }'s Profile
+    {% else %}
+        Feane
+    {% endif %}
+{% endblock %}
+
+
+
+{% block content %}
+<p>User is authenticated: {{ user.is_authenticated }}</p>
+<p>Username: {{ user.username }}</p>
+
+
 <body>
     <div class="container mt-5">
         <div class="card">
-            <img src="{{ users.profiles.profile_pics.url }}" class="card-img-top" alt="Profile Picture">
+            <img src="{{ users.profiles.profile_picture.url }}" class="card-img-top" alt="Profile Picture">
             <div class="card-body">
                 <h5 class="card-title">{{ user.username }}</h5>
                 <p class="card-text">
@@ -17,13 +25,12 @@
                     <strong>Location:</strong> {{ user.profile.location }}<br>
                     <strong>Birth Date:</strong> {{ user.profile.birth_date|date:"F j, Y" }}
                 </p>
-                <a href="#" class="btn btn-primary">Edit Profile</a>
+                <a href="{% url 'profiles:profile_edit' %}" class="btn btn-primary">Edit Profile</a>
             </div>
         </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+   
 </body>
 </html>
+{% endblock content %}
