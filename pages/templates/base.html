@@ -14,13 +14,7 @@
   <meta name="author" content="" />
   <link rel="shortcut icon" href="{% static 'images/favicon.png' %}" type="">
 
-  <title>
-    {% if page_title %}
-        {{ page_title.titles }}
-    {% else %}
-        Home Page  <!-- Use 'Home Page' as the default title -->
-    {% endif %}
-</title>
+<title>{% block title %}{{ page_title }}{% endblock %}</title>
 
   <!-- bootstrap core css -->
   <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" />
@@ -146,9 +140,11 @@
         </nav>
       </div>
     </header>
-    {% block content %}
-
-    {% endblock content %}
+    <main>
+      {% block content %}
+      <!-- Default content if block is not overridden -->
+      {% endblock %}
+    </main>
      <!-- footer section -->
   <footer class="footer_section">
     <div class="container">

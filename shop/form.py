@@ -18,9 +18,11 @@ class TableForm(forms.ModelForm):
 
     def clean(self):
         cleaned_data = super().clean()
+        name = cleaned_data.get('Name')
+        phone = cleaned_data.get('Phone')
         email = cleaned_data.get("email")
-        if not email.is_valid():
+        if not name or not phone or not email:
             raise forms.ValidationError("Email is not valid.")
-
-
+    
+        return cleaned_data
 

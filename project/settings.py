@@ -41,7 +41,9 @@ INSTALLED_APPS = [
     'pages',
     'users',
     'profiles',
-    'shop'
+    'shop',
+    "rest_framework",
+    'api',
 ]
 
 MIDDLEWARE = [
@@ -123,7 +125,7 @@ USE_TZ = True
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'project/static'), ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
@@ -133,3 +135,19 @@ AUTH_USER_MODEL = 'users.User'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# settings.py
+
+# Email Configuration
+# Email Configuration
+# Email Configuration
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587  # Gmail SMTP port for TLS
+EMAIL_USE_TLS = True  # TLS is required for Gmail
+EMAIL_HOST_USER = 'nwosuemmanuel159@gmail.com'  # Your Gmail address
+EMAIL_HOST_PASSWORD = 'yxkc coog gldt cozq'  # Your Gmail account password
+DEFAULT_FROM_EMAIL = 'nwosuemmanuel159@gmail.com'  # Sender email address (can be the same as EMAIL_HOST_USER)
+EMAIL_TIMEOUT = None  # Timeout value, None means indefinite wait
+EMAIL_USE_SSL = False  # Use SSL if your server requires it, but Gmail uses TLS

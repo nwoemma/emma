@@ -18,7 +18,7 @@
   <button type="submit" class="btn btn-primary">Submit</button>
 
   <p>If you don't have an account, <a href="{% url 'users:register' %}">Register here</a></p>
-
+  <p>Forgotten Password?<a href="{% url 'users:password_reset' %}">Click Here</a></p>
 {% endblock content %}
 
 {% block footer %}

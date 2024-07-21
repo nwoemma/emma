@@ -5,9 +5,25 @@ from django.contrib.auth.views import LoginView
 from django.urls import reverse_lazy
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
+from django.utils.encoding import force_bytes, force_str
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 
+def page_view(request, page_name):
+    titles = {
+        'home': 'Home',
+        'about': 'About Us',
+        'register': 'Register',
+        'login': 'Login',
+        'profile': 'Your Profile',
+        'menu': 'Menu',
+        'booking': 'Booking',
+    }
+    title = titles.get(page_name, 'Default Title')
+    return render(request, f'{page_name}.html', {'page_title': title})
 
 def register(request):
+    context = {}  # Initialize context variable
+    
     if request.method == 'POST':
         form = RegisterForm(request.POST)
         if form.is_valid():
@@ -16,10 +32,18 @@ def register(request):
             return redirect('users:loginUser')
     else:
         form = RegisterForm()
-    return render(request, 'users/register.html', {'form': form})
+    
+    context['form'] = form
+    context['page_title'] = 'Register'
+    
+    return render(request, 'users/register.html', context)
 
 def loginUser(request):
     message = ''
+    context = {
+        'page_title': 'Login',
+    }
+    
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
@@ -29,7 +53,9 @@ def loginUser(request):
             message = f'Hello {user.username}! You have been logged in.'
             return redirect('pages:home')  
         message = 'Login failed. Please check your username and password.'
-    return render(request, 'users/login.html', {'message': message})
+    
+    context['message'] = message
+    return render(request, 'users/login.html', context)
 
 def logoutUser(request):
     logout(request)
@@ -39,7 +65,3 @@ def logoutUser(request):
 # class CustomLoginView(LoginView):
 #     template_name = 'users/login.html'  # Update this to your login template
 #     success_url = reverse_lazy('home') 
-
-
-
-
