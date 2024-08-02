@@ -2,6 +2,9 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .form import ProfileForm
 from .models import Profile
+from rest_framework import viewsets
+from .serializers import ProfileSerializer
+
 
 @login_required
 def profile_view(request):
@@ -33,3 +36,7 @@ def edit_profile(request):
         form = ProfileForm(instance=profile)
 
     return render(request, 'profile/edit_profile.html', {'form': form})
+
+class ProfileViewSet(viewsets.ModelViewSet):
+    queryset = Profile.objects.all()
+    serializer_class = ProfileSerializer
