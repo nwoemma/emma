@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Ivory Specialist Hospital Chat App{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'chat_styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Ivory Specialist Hospital Chat App</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'chat:chat_room_list' %}">Chat Rooms</a></li>
+                <li><a href="{% url 'chat:private_message_list' %}">Private Messages</a></li>
+                <a href="{% url 'patients:patient_appointments' %}" class="btn btn-primary">Patient Appointments</a>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'chat:logoutChat' %}">Logout</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% block content %}
+        <!-- Content will be injected here -->
+        {% endblock %}
+    </main>
+    <footer>
+        <p>&copy; 2024 Ivory Specialist Hospital Chat App</p>
+    </footer>
+</body>
+</html>

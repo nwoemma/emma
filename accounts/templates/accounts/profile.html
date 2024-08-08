@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %}Your Profile{% endblock %}
+{% block content %}
+<div class="container mt-5">
+    {% if user.is_authenticated %}
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header text-center">
+                        <h2>{{ page_title }}</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4 text-center">
+                                <!-- User's Profile Picture -->
+                                {% if user.profile_picture %}
+                                    <img src="{{ user.profile_picture.url }}" alt="Profile Picture" class="img-fluid rounded-circle" style="max-width: 150px;">
+                                {% else %}
+                                    <img src="https://via.placeholder.com/150" class="img-fluid rounded-circle" alt="Profile Picture">
+                                {% endif %}
+                                <p class="text-muted">{{ user.email }}</p>
+                            </div>
+                            <div class="col-md-8">
+                                <dl class="row">
+                                    <dt class="col-sm-4">Username</dt>
+                                    <dd class="col-sm-8">{{ user.username }}</dd>
+
+                                    <dt class="col-sm-4">Email</dt>
+                                    <dd class="col-sm-8">{{ user.email }}</dd>
+
+                                    <dt class="col-sm-4">Phone Number</dt>
+                                    <dd class="col-sm-8">{{ user.profile.phone_number }}</dd>
+
+                                    <dt class="col-sm-4">Date of Birth</dt>
+                                    <dd class="col-sm-8">{{ user.profile.date_of_birth }}</dd>
+
+                                    <dt class="col-sm-4">Department</dt>
+                                    <dd class="col-sm-8">{{ user.profile.department }}</dd>
+
+                                    <dt class="col-sm-4">Specialty</dt>
+                                    <dd class="col-sm-8">{{ user.profile.specialty }}</dd>
+                                </dl>
+
+                                <!-- Link to Edit Profile Page -->
+                                <a href="{% url 'accounts:edit_profile' %}" class="btn btn-primary">Edit Profile</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div class="text-center">
+            <h2>Please Log In</h2>
+            <p>You need to be logged in to view this page. <a href="{% url 'accounts:loginAccount' %}">Login here</a>.</p>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block footer %}
+
+{% endblock footer %}

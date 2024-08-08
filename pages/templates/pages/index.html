@@ -1,0 +1,155 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+    <!-- Hero Section -->
+    <header class="hero-section text-white text-center" style="background: url('https://via.placeholder.com/1920x500') no-repeat center center; background-size: cover; padding: 100px 0;">
+        <div class="container">
+            <h1 class="display-4">Welcome to Ivory Specialist Hospital</h1>
+            <p class="lead">Motto: We care, but God heals</p>
+            <a href="{% url 'pages:contact' %}" class="btn btn-light btn-lg">Contact Us</a>
+        </div>
+    </header>
+
+
+
+    <!-- Services Section -->
+    <section id="services" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-4">Our Services</h2>
+            <ul class="list-unstyled">
+                <li class="d-flex align-items-center mb-4">
+                    <i class="fas fa-stethoscope fa-3x mr-3" style="color: #007bff;"></i>
+                    <div>
+                        <h4>General Checkup</h4>
+                        <p>Comprehensive health checkups for overall wellness.</p>
+                    </div>
+                </li>
+                <li class="d-flex align-items-center mb-4">
+                    <i class="fas fa-heartbeat fa-3x mr-3" style="color: #007bff;"></i>
+                    <div>
+                        <h4>Cardiology</h4>
+                        <p>Specialized care for heart-related conditions.</p>
+                    </div>
+                </li>
+                <li class="d-flex align-items-center mb-4">
+                    <i class="fas fa-pills fa-3x mr-3" style="color: #007bff;"></i>
+                    <div>
+                        <h4>Pharmacy</h4>
+                        <p>Access to a wide range of medications and health products.</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">What Our Patients Say</h2>
+            <ul class="list-unstyled">
+                <li class="testimonial-item mb-4 p-4 bg-light rounded">
+                    <p>"The care and professionalism I received at Ivory Hospital were outstanding. I felt supported throughout my entire treatment."</p>
+                    <footer class="blockquote-footer">Jane Doe</footer>
+                </li>
+                <li class="testimonial-item mb-4 p-4 bg-light rounded">
+                    <p>"Exceptional service from the moment I walked in. The staff was friendly, and the facilities were top-notch."</p>
+                    <footer class="blockquote-footer">John Smith</footer>
+                </li>
+                <li class="testimonial-item mb-4 p-4 bg-light rounded">
+                    <p>"I am grateful for the compassionate care I received. The team at Ivory Hospital made my recovery process much easier."</p>
+                    <footer class="blockquote-footer">Emily Johnson</footer>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-4">Our Gallery</h2>
+            <ul class="list-unstyled row">
+                <li class="col-md-4 mb-4">
+                    <img src="https://via.placeholder.com/400x300" alt="Gallery Image 1" class="img-fluid rounded">
+                </li>
+                <li class="col-md-4 mb-4">
+                    <img src="https://via.placeholder.com/400x300" alt="Gallery Image 2" class="img-fluid rounded">
+                </li>
+                <li class="col-md-4 mb-4">
+                    <img src="https://via.placeholder.com/400x300" alt="Gallery Image 3" class="img-fluid rounded">
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <!-- <section id="blog" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Latest News & Blog</h2>
+            <ul class="list-unstyled row">
+                <li class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="https://via.placeholder.com/400x300" class="card-img-top" alt="Blog Post 1">
+                        <div class="card-body">
+                            <h5 class="card-title">Health Tips for a Better Life</h5>
+                            <p class="card-text">Discover practical tips and advice for maintaining a healthy lifestyle and improving your overall well-being.</p>
+                            <a href="#" class="btn btn-primary">Read More</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="https://via.placeholder.com/400x300" class="card-img-top" alt="Blog Post 2">
+                        <div class="card-body">
+                            <h5 class="card-title">Understanding Heart Health</h5>
+                            <p class="card-text">Learn about the importance of heart health, including preventive measures and treatment options for cardiovascular conditions.</p>
+                            <a href="#" class="btn btn-primary">Read More</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="https://via.placeholder.com/400x300" class="card-img-top" alt="Blog Post 3">
+                        <div class="card-body">
+                            <h5 class="card-title">Innovations in Medical Technology</h5>
+                            <p class="card-text">Stay informed about the latest advancements in medical technology and how they are transforming patient care.</p>
+                            <a href="#" class="btn btn-primary">Read More</a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div> -->
+
+    </section>
+        <!-- About Us and Call to Action Sections Combined -->
+        <section id="about-cta" class="py-5">
+            <div class="container">
+                <div class="row">
+                    <!-- About Us Section -->
+                    <div class="col-md-6 mb-5 mb-md-0">
+                        <h2 class="text-center mb-4">About Us</h2>
+                        <p class="text-center">Ivory Hospital has been dedicated to providing the highest quality healthcare for over 20 years. Our experienced professionals are committed to delivering personalized and compassionate care to each patient.</p>
+                        <a href="{% url 'pages:about' %}" class="btn btn-light btn-lg">About Us</a>
+                    </div>
+    
+                    <!-- Call to Action Section -->
+                    <div class="col-md-6 d-flex align-items-center" style="background: #007bff; color: #fff;">
+                        <div class="text-center mx-auto">
+                            <h2 class="mb-4">Join Us in Our Mission for Better Health</h2>
+                            <p class="mb-4">We are always looking for dedicated individuals to join our team. If you are passionate about healthcare and making a difference, we'd love to hear from you.</p>
+                            <a href="{% url 'pages:contact' %}" class="btn btn-light btn-lg">Get in Touch</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    <!-- Footer -->
+    <footer class="py-4 bg-dark text-white">
+        <div class="container text-center">
+            <p class="mb-0">© 2024 Ivory Hospital. All rights reserved.</p>
+            <a href="#" class="text-light mx-2"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="text-light mx-2"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="text-light mx-2"><i class="fab fa-instagram"></i></a>
+        </div>
+    </footer>
+{% endblock content %}

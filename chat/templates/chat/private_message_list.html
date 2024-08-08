@@ -1,0 +1,10 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h2>Private Messages</h2>
+  <ul class="chat-room-list">
+    {% for user in users %}
+      <li><a href="{% url 'chat:private_message_detail' user.username %}">{{ user.username }}</a></li>
+    {% endfor %}
+  </ul>
+{% endblock %}

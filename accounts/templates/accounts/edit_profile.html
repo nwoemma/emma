@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% block title %}Edit Profile{% endblock %}
+{% load widget_tweaks %}
+{% block content %}
+<div class="container mt-5">
+    {% if user.is_authenticated %}
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header text-center">
+                        <h2>{{ page_title }}</h2>
+                    </div>
+                    <div class="card-body">
+                        <form method="post" enctype="multipart/form-data" action="{% url 'accounts:edit_profile' %}">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="id_username">Username</label>
+                                {{ form.username|add_class:"form-control" }}
+                                {% for error in form.username.errors %}
+                                    <div class="invalid-feedback d-block">{{ error }}</div>
+                                {% endfor %}
+                            </div>
+
+                            <div class="form-group">
+                                <label for="id_email">Email</label>
+                                {{ form.email|add_class:"form-control" }}
+                                {% for error in form.email.errors %}
+                                    <div class="invalid-feedback d-block">{{ error }}</div>
+                                {% endfor %}
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="id_role">Role</label>
+                                {{ form.role|add_class:"form-control" }}
+                                {% for error in form.role.errors %}
+                                    <div class="invalid-feedback d-block">{{ error }}</div>
+                                {% endfor %}
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="id_phone_number">Phone Number</label>
+                                {{ form.phone_number|add_class:"form-control" }}
+                                {% for error in form.phone_number.errors %}
+                                    <div class="invalid-feedback d-block">{{ error }}</div>
+                                {% endfor %}
+                            </div>
+
+                            <div class="form-group">
+                                <label for="id_date_of_birth">Date of Birth</label>
+                                {{ form.date_of_birth|add_class:"form-control" }}
+                                {% for error in form.date_of_birth.errors %}
+                                    <div class="invalid-feedback d-block">{{ error }}</div>
+                                {% endfor %}
+                            </div>
+
+                            <div class="form-group">
+                                <label for="id_department">Department</label>
+                                {{ form.department|add_class:"form-control" }}
+                                {% for error in form.department.errors %}
+                                    <div class="invalid-feedback d-block">{{ error }}</div>
+                                {% endfor %}
+                            </div>
+
+                            <div class="form-group">
+                                <label for="id_specialty">Specialty</label>
+                                {{ form.specialty|add_class:"form-control" }}
+                                {% for error in form.specialty.errors %}
+                                    <div class="invalid-feedback d-block">{{ error }}</div>
+                                {% endfor %}
+                            </div>
+
+                            <div class="form-group">
+                                <label for="id_profile_picture">Profile Picture</label>
+                                {{ form.profile_picture|add_class:"form-control-file" }}
+                                {% for error in form.profile_picture.errors %}
+                                    <div class="invalid-feedback d-block">{{ error }}</div>
+                                {% endfor %}
+                                {% if form.instance.profile_picture %}
+                                    <img src="{{ form.instance.profile_picture.url }}" alt="Profile Picture" class="img-fluid mt-2" style="max-width: 150px;">
+                                {% endif %}
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-block">Update Profile</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div class="text-center">
+            <h2>Please Log In</h2>
+            <p>You need to be logged in to view this page. <a href="{% url 'accounts:loginAccount' %}">Login here</a>.</p>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

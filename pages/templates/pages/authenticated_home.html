@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    <!-- Hero Section -->
+    <header class="hero-section text-white text-center" style="background: url('https://via.placeholder.com/1920x500') no-repeat center center; background-size: cover; padding: 100px 0;">
+        <div class="container">
+            <h1 class="display-4">Welcome Back to Ivory Specialist Hospital</h1>
+            <p class="lead">Motto: We care, but God heals</p>
+            <a href="{% url 'accounts:profile' %}" class="btn btn-light btn-lg">View Your Profile</a>
+        </div>
+    </header>
+
+    <!-- Services Section -->
+    <section id="services" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-4">Our Services</h2>
+            <ul class="list-unstyled">
+                <li class="d-flex align-items-center mb-4">
+                    <i class="fas fa-stethoscope fa-3x mr-3" style="color: #007bff;"></i>
+                    <div>
+                        <h4>General Checkup</h4>
+                        <p>Comprehensive health checkups for overall wellness.</p>
+                    </div>
+                </li>
+                <li class="d-flex align-items-center mb-4">
+                    <i class="fas fa-heartbeat fa-3x mr-3" style="color: #007bff;"></i>
+                    <div>
+                        <h4>Cardiology</h4>
+                        <p>Specialized care for heart-related conditions.</p>
+                    </div>
+                </li>
+                <li class="d-flex align-items-center mb-4">
+                    <i class="fas fa-pills fa-3x mr-3" style="color: #007bff;"></i>
+                    <div>
+                        <h4>Pharmacy</h4>
+                        <p>Access to a wide range of medications and health products.</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- User Specific Section -->
+    <section id="user-specific" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Personalized Information</h2>
+            <p class="text-center">Welcome, {{ user.username }}! Here you can find your recent appointments, health records, and more.</p>
+            <!-- Add more personalized content as needed -->
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">What Our Patients Say</h2>
+            <ul class="list-unstyled">
+                <li class="testimonial-item mb-4 p-4 bg-light rounded">
+                    <p>"The care and professionalism I received at Ivory Hospital were outstanding. I felt supported throughout my entire treatment."</p>
+                    <footer class="blockquote-footer">Jane Doe</footer>
+                </li>
+                <li class="testimonial-item mb-4 p-4 bg-light rounded">
+                    <p>"Exceptional service from the moment I walked in. The staff was friendly, and the facilities were top-notch."</p>
+                    <footer class="blockquote-footer">John Smith</footer>
+                </li>
+                <li class="testimonial-item mb-4 p-4 bg-light rounded">
+                    <p>"I am grateful for the compassionate care I received. The team at Ivory Hospital made my recovery process much easier."</p>
+                    <footer class="blockquote-footer">Emily Johnson</footer>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-4">Our Gallery</h2>
+            <ul class="list-unstyled row">
+                <li class="col-md-4 mb-4">
+                    <img src="https://via.placeholder.com/400x300" alt="Gallery Image 1" class="img-fluid rounded">
+                </li>
+                <li class="col-md-4 mb-4">
+                    <img src="https://via.placeholder.com/400x300" alt="Gallery Image 2" class="img-fluid rounded">
+                </li>
+                <li class="col-md-4 mb-4">
+                    <img src="https://via.placeholder.com/400x300" alt="Gallery Image 3" class="img-fluid rounded">
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- About Us and Call to Action Sections Combined -->
+    <section id="about-cta" class="py-5">
+        <div class="container">
+            <div class="row">
+                <!-- About Us Section -->
+                <div class="col-md-6 mb-5 mb-md-0">
+                    <h2 class="text-center mb-4">About Us</h2>
+                    <p class="text-center">Ivory Hospital has been dedicated to providing the highest quality healthcare for over 20 years. Our experienced professionals are committed to delivering personalized and compassionate care to each patient.</p>
+                    <a href="{% url 'pages:about' %}" class="btn btn-light btn-lg">About Us</a>
+                </div>
+
+                <!-- Call to Action Section -->
+                <div class="col-md-6 d-flex align-items-center" style="background: #007bff; color: #fff;">
+                    <div class="text-center mx-auto">
+                        <h2 class="mb-4">Join Us in Our Mission for Better Health</h2>
+                        <p class="mb-4">We are always looking for dedicated individuals to join our team. If you are passionate about healthcare and making a difference, we'd love to hear from you.</p>
+                        <a href="{% url 'pages:contact' %}" class="btn btn-light btn-lg">Get in Touch</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock content %}

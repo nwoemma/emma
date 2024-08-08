@@ -1,0 +1,89 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{{ page_title }}{% endblock %}</title>
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="{% url 'pages:home' %}">Ivory Specialist Hospital</a>
+        {% if user.is_authenticated %}
+        <a href="{% url 'patients:patient_appointments' %}" class="btn btn-primary">Book Appointments</a>
+        {% endif %}
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                {% if user.is_authenticated %}
+                <li class="nav-item {% if request.resolver_match.url_name == 'home' %}active{% endif %}">
+                    <a class="nav-link" href="{% url 'pages:authenticated_home' %}">Home</a>
+                </li>
+                {% else %}
+                <li class="nav-item {% if request.resolver_match.url_name == 'home' %}active{% endif %}">
+                    <a class="nav-link" href="{% url 'pages:home' %}">Home</a>
+                </li>
+                {% endif %}
+                <!-- Other links -->
+                {% if user.is_authenticated %}
+                <li class="nav-item {% if request.resolver_match.url_name == 'about' %}active{% endif %}">
+                    <a class="nav-link" href="{% url 'pages:about' %}">About Us</a>
+                </li>
+                <li class="nav-item {% if request.resolver_match.url_name == 'services' %}active{% endif %}">
+                    <a class="nav-link" href="{% url 'pages:services' %}">Services</a>
+                </li>
+                <li class="nav-item {% if request.resolver_match.url_name == 'Chat' %}active{% endif %}">
+                    <a class="nav-link" href="{% url 'chat:chat_room_list' %}">Chat</a>
+                </li>
+                <li class="nav-item {% if request.resolver_match.url_name == 'contact' %}active{% endif %}">
+                    <a class="nav-link" href="{% url 'pages:contact' %}">Contact</a>
+                </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-icon" href="{% url 'accounts:profile' %}">
+                            <i class="fas fa-user-circle fa-2x"></i>
+                            Profile
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn-btn solid-border btn-round-full" href="{% url 'accounts:logoutAccount' %}">Logout</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="btn-btn solid-border btn-round-full" href="{% url 'accounts:loginAccount' %}">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn-btn solid-border btn-round-full" href="{% url 'accounts:register' %}">Register</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+
+    {% block content %}
+    {% endblock content %}
+
+    {% if is_login_or_register %}
+    <!-- Optional Footer -->
+    <footer class="bg-dark text-white text-center py-4">
+        <p>&copy; 2024 Ivory Hospital. All Rights Reserved.</p>
+        <ul class="list-unstyled">
+            <li><a href="#" class="text-white">Privacy Policy</a></li>
+            <li><a href="#" class="text-white">Terms of Service</a></li>
+        </ul>
+    </footer>
+    {% endif %}
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

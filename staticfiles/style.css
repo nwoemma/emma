@@ -1,0 +1,196 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    color: #333;
+    line-height: 1.6;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.navbar {
+    margin-bottom: 20px;
+}
+
+.hero-section {
+    color: #fff;
+    text-align: center;
+    padding: 100px 0;
+}
+
+.hero-section h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.hero-section p {
+    font-size: 1.25rem;
+}
+
+.footer {
+    background-color: #343a40;
+    color: #fff;
+}
+
+.footer a {
+    color: #fff;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+/* About Page */
+#about p {
+    font-size: 1.125rem;
+}
+
+/* Services Page */
+#services .service-icon {
+    margin-bottom: 20px;
+}
+
+#services h4 {
+    margin-top: 10px;
+}
+
+/* Blog Section */
+#blog .card {
+    border: none;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#blog .card-img-top {
+    border-radius: 0.5rem 0.5rem 0 0;
+}
+
+/* Contact Page */
+#contact form {
+    margin-bottom: 20px;
+}
+
+#contact .form-control {
+    border-radius: 0.25rem;
+    box-shadow: none;
+}
+
+#contact .btn-primary {
+    background-color: #007bff;
+    border: none;
+}
+
+#contact .btn-primary:hover {
+    background-color: #0056b3;
+}
+
+#contact .list-unstyled {
+    line-height: 1.8;
+}
+
+#contact i {
+    margin-right: 10px;
+}
+
+/* Miscellaneous */
+.container {
+    max-width: 1140px; /* Ensure this does not conflict with Bootstrap's container */
+}
+
+.text-center {
+    text-align: center;
+}
+
+.mt-4 {
+    margin-top: 1.5rem;
+}
+
+.mb-4 {
+    margin-bottom: 1.5rem;
+}
+
+.icon-register-container {
+    display: flex;
+    align-items: center;
+}
+
+.icon-register-container i {
+    margin-right: 1rem; /* Adjust this value as needed */
+}
+
+.btn-custom {
+    background-color: #007bff;
+    color: #ffffff;
+    border-radius: 50px;
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+.btn-custom:hover {
+    background-color: #f4f7fa;
+    color: #672cf0;
+}
+
+/* Base Button Styles */
+.btn-btn {
+    font-family: Arial, sans-serif; /* Match font with list items */
+    font-size: 16px; /* Match font size with list items */
+    padding: 10px 20px; /* Add padding */
+    cursor: pointer; /* Pointer cursor */
+    border: 2px solid #000; /* Border */
+    background-color: #20065e; /* Background color */
+    color: rgb(90, 90, 240); /* Text color */
+    height: 100%; /* Make the button take the full height of the parent (li) */
+    border-radius: 50px; /* Fully rounded corners */
+}
+
+/* Button Hover Styles */
+.btn-btn:hover {
+    background-color: #f0f0f0; /* Change background color on hover */
+    color: rgb(90, 90, 240); /* Maintain text color on hover */
+}
+
+/* List Styles */
+ul {
+    list-style-type: none; /* Remove default list item styling */
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margin to ensure no extra space */
+}
+
+li {
+    display: flex; /* Use flexbox to align content */
+    align-items: center; /* Vertically center content */
+    height: 50px; /* Set a specific height for the list items */
+    padding: 0 10px; /* Add padding */
+    border-bottom: 1px solid #ddd; /* Border under list items */
+    font-family: Arial, sans-serif; /* Match font with button */
+    font-size: 16px; /* Match font size with button */
+    color: blue; /* Match text color with button */
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.content {
+    flex: 1;
+}
+.footer {
+    background-color: #f8f9fa;
+    padding: 200px;
+    text-align: center;
+}
+.bg-light{
+    background-color: #007bff!important;
+}

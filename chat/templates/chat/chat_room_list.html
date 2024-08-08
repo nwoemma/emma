@@ -1,0 +1,10 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h2>Chat Rooms</h2>
+  <ul class="chat-room-list">
+    {% for room in chat_rooms %}
+      <li><a href="{% url 'chat:chat_room_detail' room.pk %}">{{ room.name }}</a></li>
+    {% endfor %}
+  </ul>
+{% endblock %}

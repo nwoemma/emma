@@ -1,0 +1,20 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <div class="chat-container">
+    <div class="message-list">
+      {% for message in messages %}
+        <div class="message {% if message.user == user %}user{% else %}other{% endif %}">
+          <div class="message-content">
+            <strong>{{ message.user.username }}</strong>: {{ message.content }}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    <form method="post" class="message-input">
+      {% csrf_token %}
+      <textarea name="content" rows="3" placeholder="Type a message..."></textarea>
+      <button type="submit">Send</button>
+    </form>
+  </div>
+{% endblock %}

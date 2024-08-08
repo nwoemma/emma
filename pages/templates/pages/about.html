@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+
+
+    <!-- Hero Section -->
+    <header class="hero-section text-white text-center" style="background: url('https://via.placeholder.com/1920x500') no-repeat center center; background-size: cover; padding: 100px 0;">
+        <div class="container">
+            <h1 class="display-4">About Ivory Hospital</h1>
+            <p class="lead">Committed to Excellence in Healthcare</p>
+        </div>
+    </header>
+
+    <!-- About Us Section -->
+    <section id="about" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">About Us</h2>
+            <p class="text-center">Ivory Hospital has been dedicated to providing the highest quality healthcare for over 20 years. Our team of experienced professionals is committed to delivering personalized and compassionate care to each patient.</p>
+            <h3>Our Mission</h3>
+            <ul>
+                <li>To provide high-quality healthcare services with compassion and excellence.</li>
+                <li>To promote health and well-being in our community.</li>
+                <li>To ensure patient-centered care and innovative treatments.</li>
+            </ul>
+            <h3>Our Values</h3>
+            <ul>
+                <li>Integrity: Adhering to the highest ethical standards.</li>
+                <li>Respect: Treating every patient and staff member with dignity.</li>
+                <li>Excellence: Striving for the highest level of medical care and service.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-4">Meet Our Team</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="https://via.placeholder.com/400x300" class="card-img-top" alt="Dr. Sarah Lee">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Dr. Sarah Lee</h5>
+                            <p class="card-text">Chief Medical Officer</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="https://via.placeholder.com/400x300" class="card-img-top" alt="Dr. Michael Brown">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Dr. Michael Brown</h5>
+                            <p class="card-text">Head of Cardiology</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="https://via.placeholder.com/400x300" class="card-img-top" alt="Nurse Emma Davis">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Nurse Emma Davis</h5>
+                            <p class="card-text">Senior Nurse</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">What Our Patients Say</h2>
+            <ul class="list-unstyled">
+                <li class="testimonial-item mb-4 p-4 bg-light rounded">
+                    <p>"The care and professionalism I received at Ivory Hospital were outstanding. I felt supported throughout my entire treatment."</p>
+                    <footer class="blockquote-footer">Jane Doe</footer>
+                </li>
+                <li class="testimonial-item mb-4 p-4 bg-light rounded">
+                    <p>"Exceptional service from the moment I walked in. The staff was friendly, and the facilities were top-notch."</p>
+                    <footer class="blockquote-footer">John Smith</footer>
+                </li>
+                <li class="testimonial-item mb-4 p-4 bg-light rounded">
+                    <p>"I am grateful for the compassionate care I received. The team at Ivory Hospital made my recovery process much easier."</p>
+                    <footer class="blockquote-footer">Emily Johnson</footer>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Contact Information Section -->
+    <section id="contact-info" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-4">Contact Us</h2>
+            <p class="text-center">Feel free to reach out to us with any questions or concerns. Our team is here to assist you.</p>
+            <div class="row">
+                <div class="col-md-4 text-center">
+                    <i class="fas fa-phone fa-2x mb-3" style="color: #007bff;"></i>
+                    <p>Phone: +1 (123) 456-7890</p>
+                </div>
+                <div class="col-md-4 text-center">
+                    <i class="fas fa-envelope fa-2x mb-3" style="color: #007bff;"></i>
+                    <p>Email: info@ivoryhospital.com</p>
+                </div>
+                <div class="col-md-4 text-center">
+                    <i class="fas fa-map-marker-alt fa-2x mb-3" style="color: #007bff;"></i>
+                    <p>Address: No 1 Powerline, 175 Faulk road, Aba</p>
+                </div>
+            </div>
+            <!-- Google Maps Embed -->
+            <div class="mt-4">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.3918184293285!2d-122.3960413846805!3d37.79179587975677!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085809d0a8136b7%3A0xb4d3a0b3b37d3f6a!2s123%20Health%20St%2C%20Wellness%20City%2C%20HC%2045678!5e0!3m2!1sen!2sus!4v1632384897246!5m2!1sen!2sus" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+  {% endblock content %}

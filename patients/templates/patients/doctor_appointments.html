@@ -1,0 +1,46 @@
+{% extends "base_1.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4">Doctor's Appointments</h2>
+
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">Patient</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Reason</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for appointment in appointments %}
+                <tr>
+                    <td>{{ appointment.patient.username }}</td>
+                    <td>{{ appointment.date }}</td>
+                    <td>{{ appointment.reason }}</td>
+                    <td>{{ appointment.status }}</td>
+                    <td>
+                        <form method="post" action="{% url 'patients:update_appointment_status' pk=appointment.pk status='completed' %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-success btn-sm">Mark as Completed</button>
+                        </form>
+                        <form method="post" action="{% url 'patients:update_appointment_status' pk=appointment.pk status='canceled' %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger btn-sm">Mark as Canceled</button>
+                        </form>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="5" class="text-center">No appointments found.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
