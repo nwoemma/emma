@@ -1,38 +1,53 @@
-<!-- doctors/templates/doctors/doctor_appointments.html -->
-{% extends "base_1.html" %}
+{% extends "base_2.html" %}
 
 {% block content %}
+{% load static %}
 <div class="container mt-5">
     <h2 class="mb-4">Doctor Appointments</h2>
-
     <div class="table-responsive">
         <table class="table table-bordered">
             <thead class="thead-light">
                 <tr>
                     <th scope="col">Patient</th>
-                    <th scope="col">Nurse</th>
                     <th scope="col">Date</th>
                     <th scope="col">Reason</th>
                     <th scope="col">Status</th>
                     <th scope="col">Actions</th>
                 </tr>
             </thead>
-            <tbody id="appointments-table-body">
-                {% for appointment in appointments %}
+            <tbody>
+                {% for appointment in patient_appointments %}
                 <tr>
                     <td>{{ appointment.patient.username }}</td>
-                    <td>{{ appointment.nurse.username }}</td>
                     <td>{{ appointment.date }}</td>
                     <td>{{ appointment.reason }}</td>
-                    <td>{{ appointment.status }}</td>
                     <td>
-                        <a href="{% url 'doctor:update_appointment_status' appointment.pk 'completed' %}" class="btn btn-success">Complete</a>
-                        <a href="{% url 'doctor:update_appointment_status' appointment.pk 'canceled' %}" class="btn btn-danger">Cancel</a>
+                        {% if appointment.status == 'completed' %}
+                            <img src="{% static 'icon/favicon.ico' %}" alt="Completed" width="16" height="16">
+                        {% elif appointment.status == 'canceled' %}
+                            <img src="{% static 'icon/favicon1.ico' %}" alt="Canceled" width="16" height="16">
+                        {% else %}
+                            {{ appointment.status }}
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if appointment.can_edit %}
+                            <form action="{% url 'doctor:update_appointment_status' appointment.pk %}" method="post" style="display: inline;">
+                                {% csrf_token %}
+                                <input type="hidden" name="status" value="completed">
+                                <button type="submit" class="btn btn-success">Complete</button>
+                            </form>
+                            <form action="{% url 'doctor:update_appointment_status' appointment.pk %}" method="post" style="display: inline;">
+                                {% csrf_token %}
+                                <input type="hidden" name="status" value="canceled">
+                                <button type="submit" class="btn btn-danger">Cancel</button>
+                            </form>
+                        {% endif %}
                     </td>
                 </tr>
                 {% empty %}
                 <tr>
-                    <td colspan="6" class="text-center">No appointments found.</td>
+                    <td colspan="5" class="text-center">No appointments found.</td>
                 </tr>
                 {% endfor %}
             </tbody>

@@ -168,7 +168,7 @@ li {
     align-items: center; /* Vertically center content */
     height: 50px; /* Set a specific height for the list items */
     padding: 0 10px; /* Add padding */
-    border-bottom: 1px solid #ddd; /* Border under list items */
+    border-bottom: none; /* Border under list items */
     font-family: Arial, sans-serif; /* Match font with button */
     font-size: 16px; /* Match font size with button */
     color: blue; /* Match text color with button */
@@ -193,4 +193,22 @@ html, body {
 }
 .bg-light{
     background-color: #007bff!important;
+}
+.btn-btn{
+    display: inline-block; /* Ensure the button is displayed */
+    visibility: visible;   /* Ensure the button is visible */
+    opacity: 1; 
+}
+img{
+    background-size: cover;
+    padding: 100px 0;
+
+}
+.services-header {
+    position: relative;
+    height: 60vh;
+    overflow: hidden;
+    background-image: url("{% static 'images/gallery.png' %}");
+    background-size: cover;
+    background-position: center;
 }

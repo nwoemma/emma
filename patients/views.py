@@ -5,7 +5,13 @@ from chat.models import ChatRoom, Message, PrivateMessage
 from chat.forms import MessageForm, PrivateMessageForm
 from .models import Appointment
 from .forms import AppointmentForm
+from doctor.models import DoctorProfile, DoctorAppointment
+from contact.forms import ContactForm
+from contact.models import Contact
+from django.contrib.auth import get_user_model
 
+
+User = get_user_model()
 
 @login_required
 def patient_chat_room_list(request):
@@ -101,20 +107,47 @@ def patient_appointments(request):
 
 
 @login_required
-def doctor_appointments(request):
-    if not hasattr(request.user, "doctor_profile"):
-        return redirect("patients:patient_appointments")
-
-    appointments = Appointment.objects.filter(doctor=request.user)
-    return render(
-        request, "patients/doctor_appointments.html", {"appointments": appointments}
-    )
+def update_appointment_status(request, pk, status):
+    appointment = get_object_or_404(Appointment, pk=pk)
+    if request.user.role == "patients" and appointment.doctor == request.user:
+        appointment.status = status
+        appointment.save()
+    return redirect("patients:patient_appointments_view")
 
 
 @login_required
-def update_appointment_status(request, pk, status):
-    appointment = get_object_or_404(Appointment, pk=pk, doctor=request.user)
-    if status in dict(Appointment.STATUS_CHOICES):
-        appointment.status = status
-        appointment.save()
-    return redirect("patients:doctor_appointments")
+def patient_contact(request):
+    if request.user.role != "patient":
+        return redirect("pages:authenticated_home")
+
+    if request.method == "POST":
+        form = ContactForm(request.POST, request.FILES, request=request)
+        if form.is_valid():
+            contact = form.save(commit=False)
+            contact.user = request.user
+            
+            # Determine recipient based on recipient_role
+            recipient_role = form.cleaned_data.get("recipient_role")
+            if recipient_role == "doctor":
+                # Example logic to find a doctor user
+                contact.recipient = User.objects.filter(role="doctor").first()  # Adjust according to your logic
+            elif recipient_role == "patient":
+                contact.recipient = request.user  # Or another user if necessary
+
+            contact.save()
+            return redirect("patients:patient_messages")
+    else:
+        form = ContactForm(request=request)
+
+    return render(request, "patients/patient_contact.html", {"form": form})
+
+
+
+@login_required
+def patient_messages(request):
+    # Check if the user's role is exactly "patient"
+    if request.user.role.lower() != "patient":
+        return redirect("pages:authenticated_home")
+
+    messages = Contact.objects.filter(recipient_role="doctor", user=request.user)
+    return render(request, "patients/patients_messages.html", {"messages": messages})

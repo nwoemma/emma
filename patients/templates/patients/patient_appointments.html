@@ -12,6 +12,7 @@
                     <th scope="col">Date</th>
                     <th scope="col">Reason</th>
                     <th scope="col">Status</th>
+                    <th scope="col">Doctor</th>
                 </tr>
             </thead>
             <tbody id="appointments-table-body">
@@ -20,6 +21,7 @@
                     <td>{{ appointment.date }}</td>
                     <td>{{ appointment.reason }}</td>
                     <td>{{ appointment.status }}</td>
+                    <td>{{ appointment.doctor.username}}</td>
                 </tr>
                 {% empty %}
                 <tr>
@@ -40,6 +42,10 @@
         <div class="form-group">
             <label for="id_reason">Reason</label>
             {{ form.reason|add_class:"form-control" }}
+        </div>
+        <div class="form-group">
+            <label for="id_doctor"></label>
+            {{form.doctor|add_class:"form-control" }}
         </div>
         <button type="submit" class="btn btn-primary btn-block">Book Appointment</button>
     </form>

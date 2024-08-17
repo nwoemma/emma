@@ -1,0 +1,36 @@
+{% extends "base.html" %}  <!-- Adjust based on your base template -->
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4">Messages from Patients</h2>
+
+    {% if messages %}
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">Date</th>
+                        <th scope="col">Sender</th>
+                        <th scope="col">Message</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for message in messages %}
+                        <tr>
+                            <td>{{ message.date }}</td>
+                            <td>{{ message.sender.username }}</td>
+                            <td>{{ message.content }}</td>
+                        </tr>
+                    {% empty %}
+                        <tr>
+                            <td colspan="3" class="text-center">No messages found.</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <p class="text-center">No messages found.</p>
+    {% endif %}
+</div>
+{% endblock %}

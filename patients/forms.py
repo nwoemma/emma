@@ -6,11 +6,15 @@ from .models import Appointment
 class AppointmentForm(forms.ModelForm):
     class Meta:
         model = Appointment
-        fields = ["date", "reason"]  # Exclude 'status' as it will be set automatically
+        fields = [
+            "date",
+            "reason",
+            "doctor",
+        ]  # Exclude 'status' as it will be set automatically
 
     date = forms.DateTimeField(
-        widget=forms.DateTimeInput(format="%Y-%m-%d %H:%M:%S"),
-        input_formats=["%Y-%m-%d %H:%M:%S"],
+        widget=forms.DateTimeInput(attrs={"type": "datetime-local"}),
+        input_formats=["%Y-%m-%dT%H:%M"],
     )
 
     def clean_date(self):

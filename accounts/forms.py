@@ -32,6 +32,10 @@ class CustomUserChangeForm(forms.ModelForm):
             "phone_number",
             "profile_picture",
         )
+        date_of_birth = forms.DateField(
+            input_formats=["%Y-%m-%d", "%d/%m/%Y"],  # Adjust formats as needed
+            widget=forms.DateInput(attrs={"type": "date"}),
+        )
 
 
 class CustomAuthenticationForm(AuthenticationForm):

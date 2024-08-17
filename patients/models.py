@@ -1,4 +1,3 @@
-# patients/models.py
 from django.db import models
 from accounts.models import CustomUser
 
@@ -25,14 +24,23 @@ class Appointment(models.Model):
     ]
 
     patient = models.ForeignKey(
-        CustomUser, on_delete=models.CASCADE, related_name="appointments"
+        CustomUser,
+        on_delete=models.CASCADE,
+        related_name="general_patient_appointments",
+    )
+    doctor = models.ForeignKey(
+        CustomUser,
+        on_delete=models.SET_NULL,
+        related_name="doctor_general_appointments",
+        null=True,
+        blank=True,
     )
     nurse = models.ForeignKey(
         CustomUser,
         on_delete=models.SET_NULL,
         related_name="nurse_appointments",
         null=True,
-        blank=True,  # Allow nurse to be NULL
+        blank=True,
     )
     date = models.DateTimeField()
     reason = models.TextField()

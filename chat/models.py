@@ -23,10 +23,10 @@ class Message(models.Model):
 
 class PrivateMessage(models.Model):
     sender = models.ForeignKey(
-        CustomUser, on_delete=models.CASCADE, related_name="sent_messages"
+        CustomUser, on_delete=models.CASCADE, related_name="sent_messages_chat"
     )
     recipient = models.ForeignKey(
-        CustomUser, on_delete=models.CASCADE, related_name="received_messages"
+        CustomUser, on_delete=models.CASCADE, related_name="received_messages_chat"
     )
     content = models.TextField()
     timestamp = models.DateTimeField(auto_now_add=True)

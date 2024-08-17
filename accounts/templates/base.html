@@ -7,7 +7,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <!-- FontAwesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
@@ -37,6 +37,13 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+        {% if request.user.is_authenticated %}
+        {% if request.user.role == "doctor" and request.user.doctor_profile.is_active %}
+            <a href="{% url 'doctor:doctor_appointments' %}" class="btn btn-primary">See Appointments</a>
+        {% else %}
+            <a href="{% url 'patients:patient_appointments' %}" class="btn btn-primary">Book Appointments</a>
+        {% endif %}
+        {% endif %}
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">

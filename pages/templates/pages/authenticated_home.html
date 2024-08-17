@@ -3,15 +3,16 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
+{% load static %}
     <!-- Hero Section -->
-    <header class="hero-section text-white text-center" style="background: url('https://via.placeholder.com/1920x500') no-repeat center center; background-size: cover; padding: 100px 0;">
+    <header class="hero-section text-white text-center" style="background: url('{% static "images/gallery.png" %}') no-repeat center center; background-size: cover; padding: 100px 0;">
+
         <div class="container">
             <h1 class="display-4">Welcome Back to Ivory Specialist Hospital</h1>
             <p class="lead">Motto: We care, but God heals</p>
             <a href="{% url 'accounts:profile' %}" class="btn btn-light btn-lg">View Your Profile</a>
         </div>
     </header>
-
     <!-- Services Section -->
     <section id="services" class="py-5 bg-light">
         <div class="container">

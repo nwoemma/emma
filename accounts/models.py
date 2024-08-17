@@ -11,6 +11,7 @@ class CustomUser(AbstractUser):
         ("admin", "Admin"),
     )
     role = models.CharField(max_length=10, choices=ROLE_CHOICES, default="patient")
+    is_doctor = models.BooleanField(default=False)
     department = models.CharField(max_length=100, blank=True, null=True)
     specialty = models.CharField(max_length=100, blank=True, null=True)
     date_of_birth = models.DateField(blank=True, null=True)

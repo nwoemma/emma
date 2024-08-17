@@ -21,11 +21,12 @@ urlpatterns = [
         name="patient_private_message_detail",
     ),
     path("appointments/", views.patient_appointments, name="patient_appointments"),
-    path("doctor/appointments/", views.doctor_appointments, name="doctor_appointments"),
     # URL for updating appointment status
     path(
         "appointments/update/<int:pk>/<str:status>/",
         views.update_appointment_status,
         name="update_appointment_status",
     ),
+    path("contact/", views.patient_contact, name="patient_contact"),
+    path("messages/", views.patient_messages, name="patient_messages"),
 ]

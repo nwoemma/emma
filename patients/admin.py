@@ -24,6 +24,12 @@ class PatientProfileAdmin(admin.ModelAdmin):
 
 @admin.register(Appointment)
 class AppointmentAdmin(admin.ModelAdmin):
-    list_display = ("patient", "nurse", "date", "reason", "status")
+    list_display = ("patient", "doctor", "nurse", "date", "reason", "status")
     list_filter = ("status", "date")
-    search_fields = ("patient__username", "nurse__username", "reason", "status")
+    search_fields = (
+        "patient__username",
+        "doctor__username",
+        "nurse__username",
+        "reason",
+        "status",
+    )

@@ -1,5 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
+from contact.forms import ContactForm
+from doctor.models import DoctorProfile
+from patients.models import PatientProfile
 
 
 # Create your views here.
@@ -53,8 +56,14 @@ def services(request):
     )
 
 
-@login_required
 def contact(request):
-    return render(
-        request, "pages/contact.html", {"page_title": "Ivory Hospital - Contact Us"}
-    )
+    return render(request, "pages/contact.html")
+
+
+def home_view(request):
+    context = {}
+    if request.user.is_authenticated:
+        context["has_doctor_profile"] = hasattr(request.user, "doctor_profile")
+        if context["has_doctor_profile"]:
+            context["doctor_profile_active"] = request.user.doctor_profile.is_active
+    return render(request, "pages/index.html", context)

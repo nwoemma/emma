@@ -95,17 +95,53 @@ def profile(request):
     )
 
 
-# Edit Profile View
 @login_required
 def edit_profile(request):
     if request.method == "POST":
         form = CustomUserChangeForm(request.POST, request.FILES, instance=request.user)
         if form.is_valid():
-            form.save()
+            user = form.save()
+            if user.is_doctor:
+                if user.role == "doctor":
+                    user.doctor_profile.is_active = form.cleaned_data.get(
+                        "is_active", user.doctor_profile.is_active
+                    )
+                    user.doctor_profile.save()
+            elif user.is_patients:
+                if user.role == "patients":
+                    user.patients_profile.is_active = form.cleaned_data.get(
+                        "is_active", user.patients_profile.is_active
+                    )
+                    user.patients_profile.save()
             messages.success(request, "Profile updated successfully.")
             return redirect("accounts:profile")
     else:
         form = CustomUserChangeForm(instance=request.user)
+
+    return render(
+        request,
+        "accounts/edit_profile.html",
+        {"form": form, "page_title": "Edit Profile"},
+    )
+
+
+@login_required
+def edit_profile(request):
+    if request.method == "POST":
+        form = CustomUserChangeForm(request.POST, request.FILES, instance=request.user)
+        if form.is_valid():
+            user = form.save()
+            if user.is_doctor:
+                if hasattr(user, "doctor_profile"):
+                    user.doctor_profile.is_active = form.cleaned_data.get(
+                        "is_active", user.doctor_profile.is_active
+                    )
+                    user.doctor_profile.save()
+            messages.success(request, "Profile updated successfully.")
+            return redirect("accounts:profile")
+    else:
+        form = CustomUserChangeForm(instance=request.user)
+
     return render(
         request,
         "accounts/edit_profile.html",
