@@ -12,6 +12,29 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
+{% if request.user.is_authenticated %}
+<header>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Welcome Message -->
+            <div class="col-md-4 col-sm-12 text-left d-flex align-items-center">
+                <span>Welcome to a Professional Health Care</span>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="col-md-4 col-sm-12 text-center bg-primary text-white py-2 d-flex align-items-center justify-content-center">
+                <span class="phone-icon mr-3"><i class="fa fa-phone"></i>Call Us: 010-060-0160</span>
+                <span class="date-icon"><i class="fa fa-calendar-plus-o"></i>Duration: 6:00 AM - 10:00 PM (Mon-Fri)</span>
+            </div>
+
+            <!-- Email -->
+            <div class="col-md-4 col-sm-12 text-right bg-dark text-white py-2 d-flex align-items-center justify-content-end">
+                <span class="email-icon"><i class="fas fa-envelope ml-1"></i> <a href="mailto:ivoryhospital12@company.com" class="text-white">Email: ivoryhospital12@company.com</a></span>
+            </div>
+        </div>
+    </div>
+</header>
+{% endif %}
 <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary no-space" style="margin: 0; padding: 0;">
@@ -40,10 +63,7 @@
                     <li class="nav-item {% if request.resolver_match.url_name == 'services' %}active{% endif %}">
                         <a class="nav-link" href="{% url 'pages:services' %}">Services</a>
                     </li>
-                    <li class="nav-item {% if request.resolver_match.url_name == 'Chat' %}active{% endif %}">
-                        <a class="nav-link" href="{% url 'chat:chat_room_list' %}">Chat</a>
-                    </li>
-
+                    
                     {% if request.user.role|lower == "doctor" %}
                     <li class="nav-item {% if request.resolver_match.url_name == 'contact' %}active{% endif %}">
                     <a class="nav-link" href="{% url 'doctor:doctor_contact' %}">
@@ -57,7 +77,12 @@
                         </a>
                     </li>
                     {% endif %}
-                
+                    <li class="nav-item">
+                        <a class="btn btn-primary" href="{% url 'chat:chat_room_list' %}">
+                            Chat <i class="fas fa-comments"></i>
+                        </a>
+                    </li>
+
                     {% if request.user.role == "doctor" %}
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'doctor:doctor_messages' %}">

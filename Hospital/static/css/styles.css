@@ -1,4 +1,68 @@
 /* General Styles */
+/* @media only screen and (max-width: 1200px) {
+    header {
+        height: inherit;
+    }
+} */
+
+header {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+header .container-fluid {
+    padding: 0;
+}
+
+header .row {
+    margin: 0;
+}
+
+header .col-md-4 {
+    padding: 0;
+}
+
+header .email-icon {
+    display: flex;
+    align-items: center;
+}
+
+header .email-icon a {
+    color: white;
+    text-decoration: none;
+}
+
+header .email-icon a:hover {
+    text-decoration: underline;
+}
+
+
+.bg-primary {
+    background-color: #2a51d3;
+}
+
+.bg-dark {
+    background-color: #3b06cf;
+}
+
+.text-white {
+    color: white;
+}
+
+
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+    display: block;
+}
+
+* {
+    box-sizing: border-box;
+}
+user agent stylesheet
+header {
+    display: block;
+    unicode-bidi: isolate;
+}
 body {
     font-family: Arial, sans-serif;
     color: #333;

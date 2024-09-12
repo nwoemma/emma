@@ -1,10 +1,10 @@
-{% extends 'base.html' %}
+{% extends 'base_3.html' %}
 
 {% block title %}Login{% endblock %}
 {% load widget_tweaks %}
 {% block content %}
 <div class="container mt-5">
-    <h2 class="text-center mb-4">{{ page_title }}</h2>
+    <h2 class="text-center mb-4">{{ page_title }} Here</h2>
     <div class="row justify-content-center">
         <div class="col-md-6">
             <form method="post" action="{% url 'accounts:loginAccount' %}">

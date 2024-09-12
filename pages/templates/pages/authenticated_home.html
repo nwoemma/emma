@@ -1,13 +1,11 @@
 {% extends "base.html" %}
 
-{% block title %}Home{% endblock %}
+{% block title %}Ivory Hospital -> Home{% endblock %}
 
 {% block content %}
 {% load static %}
     <!-- Hero Section -->
-    <header class="hero-section text-white text-center" style="background: url('{% static "images/gallery.png" %}') no-repeat center center; background-size: cover; padding: 100px 0;">
-
-        <div class="container">
+    <header class="hero-section text-white text-center" style="background: url('{% static 'images/gallery.png' %}') no-repeat center center; background-size: cover; padding: 100px 0;">        <div class="container">
             <h1 class="display-4">Welcome Back to Ivory Specialist Hospital</h1>
             <p class="lead">Motto: We care, but God heals</p>
             <a href="{% url 'accounts:profile' %}" class="btn btn-light btn-lg">View Your Profile</a>
