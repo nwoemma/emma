@@ -1,0 +1,31 @@
+name: Deploy Hospital Website to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # Trigger the workflow on pushes to the main branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:            
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Build project
+        run: |
+          # Commands to build your project (if using a static site generator)
+          # For example, if using Jekyll:
+          # gem install bundler
+          # bundle install
+          # bundle exec jekyll build
+          
+          # For a plain HTML/CSS/JS site, you can skip this step if no build process is required
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public  # Directory to publish; adjust based on your build output or site root
+
