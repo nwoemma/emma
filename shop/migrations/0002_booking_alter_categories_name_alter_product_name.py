@@ -6,29 +6,37 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('shop', '0001_initial'),
+        ("shop", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Booking',
+            name="Booking",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=100, unique=True)),
-                ('phone', models.CharField(max_length=15)),
-                ('email', models.EmailField(max_length=254)),
-                ('persons', models.PositiveIntegerField()),
-                ('booking_date', models.DateField()),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=100, unique=True)),
+                ("phone", models.CharField(max_length=15)),
+                ("email", models.EmailField(max_length=254)),
+                ("persons", models.PositiveIntegerField()),
+                ("booking_date", models.DateField()),
             ],
         ),
         migrations.AlterField(
-            model_name='categories',
-            name='name',
+            model_name="categories",
+            name="name",
             field=models.CharField(max_length=255, unique=True),
         ),
         migrations.AlterField(
-            model_name='product',
-            name='name',
+            model_name="product",
+            name="name",
             field=models.CharField(max_length=255, unique=True),
         ),
     ]
