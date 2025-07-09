@@ -4,9 +4,9 @@
 <body>
     <h1>Products</h1>
     <ul>
-        {% for product in products %}
+        {% for products in product %}
             <li>
-                <a href="{% url 'product_detail' product.pk %}">{{ product.name }}</a> - ${{ product.price }}
+                <a href="{% url 'shop:product_detail' products.pk %}">{{ products.name }}</a> - ${{ products.price }}
             </li>
         {% endfor %}
     </ul>

@@ -64,7 +64,7 @@ def loginUser(request):
     context["message"] = message
     return render(request, "users/login.html", context)
 
-
+@login_required
 def logoutUser(request):
     logout(request)
     return redirect("users:loginUser")
